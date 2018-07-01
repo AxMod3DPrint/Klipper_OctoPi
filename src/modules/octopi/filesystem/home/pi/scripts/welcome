@@ -35,5 +35,6 @@ fi
 echo "------------------------------------------------------------------------------"
 echo "OctoPrint version : $_OCTOPRINT_VERSION"
 echo "OctoPi version    : $_OCTOPI_VERSION"
+echo "Klipper version   : $_KLIPPER_VERSION"
 echo "------------------------------------------------------------------------------"
 echo
