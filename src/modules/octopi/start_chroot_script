@@ -2,6 +2,7 @@
 # OctoPI generation script
 # Helper script that runs in a Raspbian chroot to create the OctoPI distro
 # Written by Guy Sheffer <guysoft at gmail dot com> and Gina Häußge <osd@foosel.net>
+# Install for Klipper added by Ax Smith-Laffin (ax@darknetweb.co.uk)
 # GPL V3
 ########
 set -x
@@ -24,7 +25,7 @@ echo "removing:" $remove_extra
 apt-get remove -y --purge  $remove_extra
 apt-get autoremove -y
 
-apt-get -y --force-yes install python2.7 python-virtualenv python-dev git screen subversion cmake checkinstall avahi-daemon libavahi-compat-libdnssd1 libffi-dev libssl-dev
+apt-get -y --force-yes install python2.7 python-virtualenv python-dev git screen subversion cmake checkinstall avahi-daemon libavahi-compat-libdnssd1 libffi-dev libssl-dev virtualenv build-essential libncurses-dev libusb-dev avrdude gcc-avr binutils-avr avr-libc bossa-cli stm32flash libnewlib-arm-none-eabi gcc-arm-none-eabi binutils-arm-none-eabi
 
 echo " - Reinstall iputils-ping"
 apt-get install --reinstall iputils-ping
@@ -117,6 +118,15 @@ EOT
 
   # fetch current yq build and install to /usr/local/bin
   wget -O yq $OCTOPI_YQ_DOWNLOAD && chmod +x yq && mv yq /usr/local/bin
+
+  #setup Klipper
+  if ["$OCTOPI_INCLUDE_KLIPPER" == "yes" ]
+  then
+    echo "--- Installing Klipper"
+    gitclone OCTOPI_KLIPPER_REPO
+    sudo -u pi virtualenv klippy-env
+    sudo -u pi /home/pi/klippy-env/bin/pip install cffi==1.6.0 pyserial==3.2.1 greenlet==0.4.10
+  fi
   
 popd
 
@@ -235,6 +245,17 @@ else
   rm /etc/init.d/webcamd
   rm /etc/default/webcamd
   rm /root/bin/webcamd
+fi
+
+### Klipper
+
+if [ "$OCTOPI_INCLUDE_KLIPPER" == "yes"]
+then
+  #make klipper start at boot
+  update-rc.d klipper defaults
+else
+  rm /etc/init.d/klipper
+  rm /etc/defaults/klipper
 fi
 
 #cleanup
