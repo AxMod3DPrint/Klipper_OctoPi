@@ -1,6 +1,7 @@
 ###############################################################################
 # All our config settings must start with OCTOPI_
 
+
 # OctoPrint archive
 [ -n "$OCTOPI_OCTOPRINT_ARCHIVE" ] || OCTOPI_OCTOPRINT_ARCHIVE=$(wget -q -O - https://api.github.com/repos/foosel/OctoPrint/releases/latest | grep "zipball_url" | cut -d : -f 2,3 | tr -d \" | tr -d ,)
 [ -n "$OCTOPI_OCTOPRINT_REPO_SHIP" ] || OCTOPI_OCTOPRINT_REPO_SHIP=https://github.com/foosel/OctoPrint.git
@@ -25,7 +26,7 @@
 [ -n "$OCTOPI_KLIPPER_REPO_SHIP" ] || OCTOPI_KLIPPER_REPO_SHIP=https://github.com/KevinOConnor/klipper.git
 [ -n "$OCTOPI_KLIPPER_REPO_BUILD" ] || OCTOPI_KLIPPPER_REPO_BUILD=
 [ -n "$OCTOPI_KLIPPER_REPO_BRANCH" ] || OCTOPI_KLIPPER_REPO_BRANCH=master
-[ -n "$OCTOPI_KLIPPER_REPO_DEPTH" ] || OCTOPI_KLIPPER_REPO_DEPTH=1
+[ -n "$OCTOPI_KLIPPER_REPO_DEPTH" ] || OCTOPI_KLIPPER_REPO_DEPTH=
 [ -n "$OCTOPI_INCLUDE_KLIPPER" ] || OCTOPI_INCLUDE_KLIPPER=yes
 
 # HAProxy
