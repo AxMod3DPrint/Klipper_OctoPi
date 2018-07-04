@@ -25,7 +25,7 @@ echo "removing:" $remove_extra
 apt-get remove -y --purge  $remove_extra
 apt-get autoremove -y
 
-apt-get -y --force-yes install python2.7 python-virtualenv python-dev git screen subversion cmake checkinstall avahi-daemon libavahi-compat-libdnssd1 libffi-dev libssl-dev gcc-arm-none-eabi binutils-arm-none-eabi
+apt-get -y --force-yes install python2.7 python-virtualenv python-dev git screen subversion cmake checkinstall avahi-daemon libavahi-compat-libdnssd1 libffi-dev libssl-dev 
 
 echo " - Reinstall iputils-ping"
 apt-get install --reinstall iputils-ping
@@ -123,13 +123,12 @@ EOT
   if [ "$OCTOPI_INCLUDE_KLIPPER" == "yes" ]
   then
     echo "--- Installing Klipper"
-    apt-get install -y virtualenv build-essential libncurses-dev libusb-dev avrdude gcc-avr binutils-avr avr-libc bossa-cli stm32flash libnewlib-arm-none-eabi gcc-arm-none-eabi gcc-arm-none-eabi binutils-arm-none-eabi
-    sudo -u pi git clone https://github.com/KevinOConnor/klipper.git
+    sudo -u pi git clone https://github.com/KevinOConnor/klipper.git --depth=1
     sudo -u pi virtualenv klippy
     sudo -u pi /home/pi/klippy/bin/pip install cffi==1.6.0 pyserial==3.2.1 greenlet==0.4.10
     cp /home/pi/klipper/scripts/klipper-start.sh /etc/init.d/klipper
     cat <<'EOT' >> /etc/default/klipper
-# Configuration for /etc/init.d/klipper"
+# Configuration for /etc/init.d/klipper
 
 KLIPPY_USER=pi
 KLIPPY_EXEC=/home/pi/klippy/bin/python
