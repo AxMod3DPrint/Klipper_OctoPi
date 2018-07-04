@@ -16,8 +16,6 @@ Download the latest stable build
 
 Official mirror is `here <http://www.axmodtechnologies/upload/klipper_octopi.zip>`_
 
-Nightly builds are available `here <http://gnethomelinux.com/OctoPi/nightly/>`_
-
 How to use it?
 --------------
 
