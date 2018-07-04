@@ -1,23 +1,20 @@
-OctoPi
-======
+Klipper OctoPi 
+==============
 
 .. image:: https://raw.githubusercontent.com/guysoft/OctoPi/devel/media/OctoPi.png
 .. :scale: 50 %
 .. :alt: OctoPi logo
 
-A `Raspberry Pi <http://www.raspberrypi.org/>`_ distribution for 3d printers. It includes the `OctoPrint <http://octoprint.org>`_ host software for 3d printers out of the box and `mjpg-streamer with RaspiCam support <https://github.com/jacksonliam/mjpg-streamer>`_ for live viewing of prints and timelapse video creation.
+A `Raspberry Pi <http://www.raspberrypi.org/>`_ distribution for 3d printers. It includes the `OctoPrint <http://octoprint.org>`_ host software for 3d printers out of the box and `mjpg-streamer with RaspiCam support <https://github.com/jacksonliam/mjpg-streamer>`_ for live viewing of prints and timelapse video creation and the `Klipper Firmware <https://github.com/KevinOConnor/klipper>`_
 
 This repository contains the source script to generate the distribution out of an existing `Raspbian <http://www.raspbian.org/>`_ distro image.
 
 Where to get it?
 ----------------
 
-Download the latest stable build via this button:
+Download the latest stable build 
 
-.. image:: https://i.imgur.com/NvUOGfS.png
-   :target: https://octopi.octoprint.org/latest
-
-Official mirror is `here <http://docstech.net/OctoPiMirror/>`_
+Official mirror is `here <http://www.axmodtechnologies/upload/klipper_octopi.zip>`_
 
 Nightly builds are available `here <http://gnethomelinux.com/OctoPi/nightly/>`_
 
